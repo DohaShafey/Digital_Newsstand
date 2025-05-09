@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Digital Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Digital Platform</div>
+            <div class="nav-links">
+                <a href="arabic-register.html" class="active">العربية</a>
+                <a href="register.html">English</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="register-container">
+        <div class="register-box">
+            <h2>إنشاء حساب</h2>
+            <form class="register-form" id="registerForm">
+                <div class="form-group">
+                    <label for="name">اسم المستخدم</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <!-- قائمة اختيار اللغة -->
+                <div class="form-group">
+                    <label for="language">اللغة المفضلة</label>
+                    <select id="language" name="language" required>
+                        <option value="" disabled selected>اختر لغة</option>
+                        <option>الإنجليزية</option>
+                        <option>العربية</option>
+                        <option>الفرنسية</option>
+                        <option>الإسبانية</option>
+                        <option>الألمانية</option>
+                        <option>الصينية</option>
+                        <option>اليابانية</option>
+                        <option>الكورية</option>
+                        <option>الروسية</option>
+                        <option>البرتغالية</option>
+                        <option>الإيطالية</option>
+                        <option>الهندية</option>
+                        <option>التركية</option>
+                        <option>الفارسية</option>
+                        <option>الأردية</option>
+                        <option>الهولندية</option>
+                    </select>
+                </div>
+
+                <!-- قائمة الاهتمامات -->
+                <div class="form-group">
+                    <label for="interests">اختر اهتماماتك</label>
+                    <select id="interests" name="interests" required>
+                        <option value="" disabled selected>اختر اهتمام</option>
+                        <option value="technology">التكنولوجيا</option>
+                        <option value="business">الأعمال</option>
+                        <option value="health">الصحة</option>
+                        <option value="sports">الرياضة</option>
+                        <option value="art">الفن</option>
+                        <option value="travel">السفر</option>
+                        <option value="education">التعليم</option>
+                    </select>
+                </div>
+
+                <a href="home.html"><button type="submit" class="register-button">تسجيل</button></a>
+            </form>
+
+            <div class="login-link">
+                <p>لديك حساب بالفعل؟ <a href="arabic-login.html">سجّل الدخول هنا</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Digital Platform. All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="register.js"></script>
+</body>
+</html>

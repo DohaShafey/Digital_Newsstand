@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Newsstand</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- بعد ما تتأكدي من الهيدر غيري الاكتيف بتاع كل صفحه عشان اللون يتغير -->
+    <header>
+        <nav>
+            <a href="home.html" style="text-decoration: none;"> <div class="logo">Digital Platform</div> </a>        
+            <div class="nav-links">
+                <a href="home.html" class="active">Home</a>
+                <a href="news.html">News</a>
+                <a href="sections.html">Sections</a>
+                <a href="favorites.html">Favorites</a>
+                <a href="subscription.html">Subscription</a>
+                <a href="account.html" class="login-btn">Account</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover the World of Digital News</h1>
+                <p>Read the latest articles from the best global sources</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for articles...">
+                    <button>Search</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- for you section -->
+        <section class="featured-articles-foryou">
+            <h2>For You</h2>
+            <div class="articles-grid" id="foryou-container">
+
+                
+
+                <!-- Will be filled by JavaScript -->
+            </div>
+        </section>
+
+        <!-- latest news -->
+        <section class="featured-articles">
+            <h2>Wake up with The Morning</h2>
+            <div class="articles-grid" id="articles-container">
+                <!-- Will be filled by JavaScript -->
+            </div>
+        </section>
+        
+        <section class="game">
+            <a href="games.html">
+                <h2>Have Fun</h2>
+            </a>
+        </section>
+
+        <section class="categories">
+            <h2>Main Sections</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <a href="#">
+                        <img src="https://i.pinimg.com/736x/f7/47/2e/f7472e601d4f32131d0a3fae5e5c3cc3.jpg" alt="News">
+                        <h3>News</h3>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="#">
+                        <img src="https://i.pinimg.com/736x/2b/51/51/2b5151c2c27a410a1ec2d662b9328b68.jpg" alt="Technology">
+                        <h3>Technology</h3>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="#">
+                        <img src="https://i.pinimg.com/736x/0a/52/17/0a5217aec017b4dc627cad4f921c9fb9.jpg" alt="Sports">
+                        <h3>Sports</h3>
+                    </a>
+                </div>
+                <div class="category-card">
+                    <a href="#">
+                        <img src="https://i.pinimg.com/736x/67/66/34/6766347ef6cab2947ec38500f50874e0.jpg" alt="Culture">
+                        <h3>Culture</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About the Platform</h3>
+                <p>A digital platform that gathers the best content from trusted sources</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Sections</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Digital Platform. All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

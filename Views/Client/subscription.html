@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subscription Plans - Digital Newsstand</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subscription.css" />
+</head>
+<body>
+  <header>
+    <nav>
+        <a href="home.html" style="text-decoration: none;"> <div class="logo">Digital Platform</div> </a>        
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="news.html">News</a>
+            <a href="sections.html">Sections</a>
+            <a href="favorites.html">Favorites</a>
+            <a href="subscription.html" class="active">Subscription</a>
+            <a href="account.html" class="login-btn">Account</a>
+        </div>
+    </nav>
+ </header>
+
+  <main class="plans-container">
+    <h2 class="plans-title">Choose Your Subscription Plan</h2>
+    <div class="plans">
+      <div class="plan-card basic">
+        <h3>Basic</h3>
+        <p class="price">$9<span>/mo</span></p>
+        <ul class="features">
+          <li>✔ Access to basic content</li>
+          <li>✔ 5GB Storage</li>
+          <li>✔ Email Support</li>
+        </ul>
+        <button class="select-button" data-plan="Basic" data-price="$9/mo">Choose Basic</button>
+      </div>
+      <div class="plan-card standard">
+        <h3>Standard</h3>
+        <p class="price">$19<span>/mo</span></p>
+        <ul class="features">
+          <li>✔ Everything in Basic</li>
+          <li>✔ 50GB Storage</li>
+          <li>✔ Priority Support</li>
+        </ul>
+        <button class="select-button" data-plan="Standard" data-price="$19/mo">Choose Standard</button>
+      </div>
+      <div class="plan-card premium">
+        <h3>Premium</h3>
+        <p class="price">$29<span>/mo</span></p>
+        <ul class="features">
+          <li>✔ Everything in Standard</li>
+          <li>✔ 200GB Storage</li>
+          <li>✔ 1-on-1 Coaching</li>
+        </ul>
+        <button class="select-button" data-plan="Premium" data-price="$29/mo">Choose Premium</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Digital Platform. All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="subscription.js"></script>
+</body>
+</html>
