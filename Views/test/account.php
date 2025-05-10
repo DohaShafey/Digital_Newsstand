@@ -1,30 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Account - Digital Newsstand</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="account.css">
-</head>
-<body>
-    <!-- بعد ما تتأكدي من الهيدر غيري الاكتيف بتاع كل صفحه عشان اللون يتغير -->
-    <header>
-      <nav>
-          <a href="home.html" style="text-decoration: none;"> <div class="logo">Digital Platform</div> </a>        
-          <div class="nav-links">
-              <a href="home.html" >Home</a>
-              <a href="news.html">News</a>
-              <a href="favorites.html">Favorites</a>
-              <a href="subscription.html">Subscription</a>
-              <a href="account.html" class="login-btn active">Account</a>
-              <!-- logout should be implement -->
-              <a href="index.html" class="login-btn active">Log out</a>
-          </div>
-      </nav>
-  </header>
+<?php require_once '../assets/include/header.php'; ?>
+
 
   <div class="container">
     <div class="sidebar">
@@ -111,27 +86,4 @@
   </div>
 
 
-  <footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>About the Platform</h3>
-            <p>A digital platform that gathers the best content from trusted sources</p>
-        </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#">Sections</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Email Feedback</a></li>
-            </ul>
-          </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Digital Platform. All Rights Reserved</p>
-    </div>
-  </footer>
-
-  <!-- <script src="account.js"></script> -->
-</body>
-</html>
+<?php require_once '../assets/include/footer.php'; ?>

@@ -15,7 +15,7 @@ require_once '../../Controllers/DBController.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Digital Newsstand</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
 </head>
 <body>
     <header>
@@ -64,6 +64,6 @@ require_once '../../Controllers/DBController.php';
         </div>
     </footer>
 
-    <script src="login.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

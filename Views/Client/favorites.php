@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorites - Digital Newsstand</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="favorites.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="home.html" style="text-decoration: none;"> <div class="logo">Digital Platform</div> </a>        
-            <div class="nav-links">
-                <a href="home.html">Home</a>
-                <a href="news.html">News</a>
-                <a href="sections.html">Sections</a>
-                <a href="favorites.html" class="active">Favorites</a>
-                <a href="subscription.html">Subscription</a>
-                <a href="account.html" class="login-btn">Account</a>
-            </div>
-        </nav>
-    </header>
+<?php require_once '../assets/include/header.php'; ?>
+
     
     <main class="favorites-container">
         <h1 class="page-title">Favorites</h1>
@@ -99,26 +78,4 @@
         </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About the Platform</h3>
-                <p>A digital platform that gathers the best content from trusted sources</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">Sections</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Digital Platform. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="favorites.js"></script>
-</body>
-</html>
+<?php require_once '../assets/include/footer.php'; ?>

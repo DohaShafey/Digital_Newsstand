@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('selectedPrice', price);
 
       // نروح لصفحة الدفع
-      window.location.href = 'confirmation.html'; // بدلي الاسم حسب صفحتك
+      window.location.href = 'confirmation.php'; // بدلي الاسم حسب صفحتك
     });
   });
 

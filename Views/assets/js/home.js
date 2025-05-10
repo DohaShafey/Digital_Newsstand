@@ -8,7 +8,7 @@ const articles = [
         author: "Ahmed Mohamed",
         date: "2025-01-15",
         category: "Technology",
-        link: "article.html"
+        link: "../test/article.php"
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ const articles = [
         author: "Sarah Ahmed",
         date: "2025-01-14",
         category: "Health",
-        link: "article2.html"
+        link: "../test/article2.php"
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ const articles = [
         author: "Mohammad Ali",
         date: "2025-01-13",
         category: "Travel",
-        link: "article3.html"
+        link: "../test/article3.php"
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const articles = [
         author: "Laila Kareem",
         date: "2025-01-12",
         category: "Technology",
-        link: "article4.html"
+        link: "../test/article4.php"
     },
     {
         id: 5,
@@ -48,7 +48,7 @@ const articles = [
         author: "Omar Hassan",
         date: "2025-01-11",
         category: "Economy",
-        link: "article5.html"
+        link: "../test/article5.php"
     },
     {
         id: 6,
@@ -58,7 +58,7 @@ const articles = [
         author: "Noor Mohamed",
         date: "2025-01-10",
         category: "Fashion",
-        link: "article6.html"
+        link: "../test/article6.php"
     }
 ];
 

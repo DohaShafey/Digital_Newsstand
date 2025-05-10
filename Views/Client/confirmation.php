@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sections - Digital Newsstand</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="confirmation.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="home.html" style="text-decoration: none;"> <div class="logo">Digital Platform</div> </a>        
-            <div class="nav-links">
-                <a href="home.html">Home</a>
-                <a href="news.html">News</a>
-                <a href="sections.html">Sections</a>
-                <a href="favorites.html">Favorites</a>
-                <a href="subscription.html" class="active">Subscription</a>
-                <a href="account.html" class="login-btn">Account</a>
-            </div>
-        </nav>
-    </header>
+<?php require_once '../assets/include/header.php'; ?>
+
 
     <!-- pay card -->
 
@@ -78,33 +56,11 @@
        
         <div class="panel-footer">
           <a href="subscription.html"> <button class="btn back-btn">Back</button> </a>
-          <a href="pay.html"> <button class="btn next-btn">Next Step</button> </a>
+          <a href="pay.php"> <button class="btn next-btn">Next Step</button> </a>
         </div>
       </div>
       
       
 
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About the Platform</h3>
-                <p>Enjoy fun and classic games !hat brings the best content from trusted sources</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">Sections</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQs</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Digital Platform. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="confirmation.js"></script>
-</body>
-</html>
+<?php require_once '../assets/include/footer.php'; ?>

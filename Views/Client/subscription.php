@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Subscription Plans - Digital Newsstand</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="subscription.css" />
-</head>
-<body>
-  <header>
-    <nav>
-        <a href="home.html" style="text-decoration: none;"> <div class="logo">Digital Platform</div> </a>        
-        <div class="nav-links">
-            <a href="home.html">Home</a>
-            <a href="news.html">News</a>
-            <a href="sections.html">Sections</a>
-            <a href="favorites.html">Favorites</a>
-            <a href="subscription.html" class="active">Subscription</a>
-            <a href="account.html" class="login-btn">Account</a>
-        </div>
-    </nav>
- </header>
+<?php require_once '../assets/include/header.php'; ?>
+
 
   <main class="plans-container">
     <h2 class="plans-title">Choose Your Subscription Plan</h2>
@@ -58,12 +37,5 @@
     </div>
   </main>
 
-  <footer>
-    <div class="footer-bottom">
-      <p>&copy; 2024 Digital Platform. All Rights Reserved</p>
-    </div>
-  </footer>
+<?php require_once '../assets/include/footer.php'; ?>
 
-  <script src="subscription.js"></script>
-</body>
-</html>
