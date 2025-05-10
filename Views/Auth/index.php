@@ -1,11 +1,24 @@
+<?php
+require_once '../../Models/User.php';
+require_once '../../Controllers/AuthController.php';
+require_once '../../Controllers/DBController.php';
+    $db = new DBController();
+    $db->openConnection();
+    $query = "SELECT * FROM user";
+    $result = $db->select($query);
+    echo "<pre>";
+    print_r($result);
+    echo "</pre>";
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Digital Newsstand</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 <body>
     <header>
