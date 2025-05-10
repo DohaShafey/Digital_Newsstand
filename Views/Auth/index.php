@@ -6,9 +6,6 @@ require_once '../../Controllers/DBController.php';
     $db->openConnection();
     $query = "SELECT * FROM user";
     $result = $db->select($query);
-    echo "<pre>";
-    print_r($result);
-    echo "</pre>";
 ?>
 
 <!DOCTYPE html>
