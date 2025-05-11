@@ -9,26 +9,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const addArticleForm = document.getElementById('addArticleForm');
     const removeArticleForm = document.getElementById('removeArticleForm');
     const updateArticleForm = document.getElementById('updateArticleForm');
+    const addCategoryForm = document.getElementById('addCategoryForm');
 
     const addArticleBtn = document.getElementById('addArticleBtn');
     const removeArticleBtn = document.getElementById('removeArticleBtn');
     const updateArticleBtn = document.getElementById('updateArticleBtn');
+    const addCategoryBtn = document.getElementById('addCategoryBtn');
 
     // التبديل بين النماذج
     addArticleBtn.addEventListener('click', function() {
         addArticleForm.style.display = 'block';
         removeArticleForm.style.display = 'none';
         updateArticleForm.style.display = 'none';
+        addCategoryForm.style.display = 'none';
     });
-
+    
     removeArticleBtn.addEventListener('click', function() {
         removeArticleForm.style.display = 'block';
         addArticleForm.style.display = 'none';
         updateArticleForm.style.display = 'none';
+        addCategoryForm.style.display = 'none';
     });
-
+    
     updateArticleBtn.addEventListener('click', function() {
         updateArticleForm.style.display = 'block';
+        addArticleForm.style.display = 'none';
+        removeArticleForm.style.display = 'none';
+        addCategoryForm.style.display = 'none';
+    });
+    
+    addCategoryBtn.addEventListener('click', function() {
+        addCategoryForm.style.display = 'block';
+        updateArticleForm.style.display = 'none';
         addArticleForm.style.display = 'none';
         removeArticleForm.style.display = 'none';
     });
@@ -63,20 +75,20 @@ document.addEventListener('DOMContentLoaded', function() {
         removeArticleForm.reset();
         alert('تم حذف المقال بنجاح');
     });
-
+    
     // تحديث مقال
     updateArticleForm.addEventListener('submit', function(e) {
         e.preventDefault();
-
+        
         const idToUpdate = Number(document.getElementById('articleIdToUpdate').value);
         const updatedTitle = document.getElementById('updatedTitle').value;
         const updatedSummary = document.getElementById('updatedSummary').value;
         const updatedImage = document.getElementById('updatedImage').value;
         const updatedCategory = document.getElementById('updatedCategory').value;
         const updatedDate = document.getElementById('updatedDate').value;
-
+        
         const index = articles.findIndex(article => article.id === idToUpdate);
-
+        
         if (index !== -1) {
             articles[index] = {
                 ...articles[index],
@@ -86,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 category: updatedCategory,
                 date: updatedDate
             };
-
+            
             localStorage.setItem('articles', JSON.stringify(articles));
             updateArticleForm.reset();
             alert('تم تحديث المقال بنجاح');
@@ -94,4 +106,34 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('لم يتم العثور على مقال بهذا المعرف');
         }
     });
+
+    // إضافة قسم
+    addCategoryForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const articleId = document.getElementById('categoryIdToAdd').value;
+    
+        articles = articles.filter(article => article.id != articleId);
+        localStorage.setItem('articles', JSON.stringify(articles));
+        addCategoryForm.reset();
+        alert('تم حذف المقال بنجاح');
+    });
 });
+
+// addCategoryForm.addEventListener('submit', function(e) {
+//     e.preventDefault();
+
+//     const newArticle = {
+//         id: Date.now(),
+//         title: document.getElementById('articleTitle').value,
+//         summary: document.getElementById('articleSummary').value,
+//         image: document.getElementById('articleImage').value,
+//         category: document.getElementById('articleCategory').value,
+//         date: document.getElementById('articleDate').value,
+//         link: 'article.html'
+//     };
+
+//     articles.push(newArticle);
+//     localStorage.setItem('articles', JSON.stringify(articles));
+//     addArticleForm.reset();
+//     alert('تم إضافة المقال بنجاح');
+// });

@@ -1,11 +1,8 @@
 <?php
 require_once '../../Models/User.php';
 require_once '../../Controllers/AuthController.php';
-require_once '../../Controllers/DBController.php';
-    $db = new DBController();
-    $db->openConnection();
-    $query = "SELECT * FROM user";
-    $result = $db->select($query);
+    $auth = new AuthController();
+    
 ?>
 
 <!DOCTYPE html>

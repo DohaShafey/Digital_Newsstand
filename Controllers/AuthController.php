@@ -8,8 +8,10 @@ class AuthController {
     // تسجيل الدخول
     public function login(User $user) {
         $db =new DBController();
+        $userEmail = $user->getUserEmail();
+        $userPassword = $user->getPassword();
         if($db->openConnection()){
-            $query = "SELECT * FROM user WHERE userEmail = '$user->userEmail' AND userPassword = '$user->userPassword'";
+            $query = "SELECT * FROM user WHERE userEmail = '$userEmail' AND userPassword = '$userPassword'";
             $result = $this->db->select($query);
             if(!$result){
                 echo "Error: ". $db->lastErrorMsg();
