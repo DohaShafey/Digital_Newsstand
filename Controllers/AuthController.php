@@ -63,7 +63,10 @@ class AuthController
 
 
 
+
+
 <?php
+//  ------------------------------------------------------------------------------------------------------------ 2
 /* 
 require_once '../../Models/User.php';
 require_once '../../Controllers/DBController.php';
