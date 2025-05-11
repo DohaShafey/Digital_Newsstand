@@ -117,3 +117,25 @@ button:hover {
     display: block;
 }
 
+.tab-titles {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab-titles h2 {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-titles h2.activeBtn {
+    color: #333537;
+    border-bottom: 2px solid #333537;
+}
+
+.tab-titles h2:not(.activeBtn) {
+    color: rgb(193, 193, 193);
+    cursor: pointer;
+}
+
