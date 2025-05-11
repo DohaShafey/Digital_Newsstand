@@ -1,7 +1,7 @@
 // بيانات المقالات المخزنة محليًا للمحاكاة
 let articles = JSON.parse(localStorage.getItem('articles')) || [
-    { id: 1, title: 'أحدث التطورات التكنولوجية في 2024', category: 'تكنولوجيا' },
-    { id: 2, title: 'نصائح للحفاظ على الصحة النفسية', category: 'صحة' }
+    { id: 1, title: 'أحدث التطورات التكنولوجية في 2024', category: 'تكنولوجيا', Language: 'عربي'},
+    { id: 2, title: 'نصائح للحفاظ على الصحة النفسية', category: 'صحة', Language: 'انجليزي' }
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             summary: document.getElementById('articleSummary').value,
             image: document.getElementById('articleImage').value,
             category: document.getElementById('articleCategory').value,
+            Language: document.getElementById('articleLanguage').value,
             date: document.getElementById('articleDate').value,
             link: 'article.html'
         };
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const updatedSummary = document.getElementById('updatedSummary').value;
         const updatedImage = document.getElementById('updatedImage').value;
         const updatedCategory = document.getElementById('updatedCategory').value;
+        const updatedLanguage = document.getElementById('updatedLanguage').value;
         const updatedDate = document.getElementById('updatedDate').value;
         
         const index = articles.findIndex(article => article.id === idToUpdate);
@@ -110,30 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // إضافة قسم
     addCategoryForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const articleId = document.getElementById('categoryIdToAdd').value;
+        // const articleId = document.getElementById('addCategoryForm').value;
     
-        articles = articles.filter(article => article.id != articleId);
-        localStorage.setItem('articles', JSON.stringify(articles));
+        // articles = articles.filter(article => article.id != articleId);
+        // localStorage.setItem('articles', JSON.stringify(articles));
         addCategoryForm.reset();
-        alert('تم حذف المقال بنجاح');
+        alert('تم اضافة القسم بنجاح');
     });
 });
-
-// addCategoryForm.addEventListener('submit', function(e) {
-//     e.preventDefault();
-
-//     const newArticle = {
-//         id: Date.now(),
-//         title: document.getElementById('articleTitle').value,
-//         summary: document.getElementById('articleSummary').value,
-//         image: document.getElementById('articleImage').value,
-//         category: document.getElementById('articleCategory').value,
-//         date: document.getElementById('articleDate').value,
-//         link: 'article.html'
-//     };
-
-//     articles.push(newArticle);
-//     localStorage.setItem('articles', JSON.stringify(articles));
-//     addArticleForm.reset();
-//     alert('تم إضافة المقال بنجاح');
-// });
