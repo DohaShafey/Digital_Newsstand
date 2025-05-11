@@ -1,6 +1,31 @@
 <?php
+session_start();
+require_once ('../../Models/User.php');
+require_once ('../../Controllers/DBController.php');
 // عرّفي الصفحة الحالية بناءً على المتغير اللي بينرسل
 $currentPage = basename($_SERVER['PHP_SELF']);
+$conn = new DBController();
+
+
+if (isset($_SESSION['user'])) {
+    $userRoleQuery = "SELECT userROLE FROM user";
+    $userRole = $conn->select($userRoleQuery);
+    if (!$userRole) { 
+        exit("");
+    }
+    else {
+        $userRole = $userRole[0]['userROLE'] == 1;
+    }
+    
+} 
+
+else {
+    // مثلاً توجيه المستخدم لصفحة تسجيل الدخول
+    header("Location: ../Auth/index.php");
+    exit();
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +54,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <a href="../test/news.php" class="<?= $currentPage === 'news.php' ? 'active' : '' ?>">News</a>
             <a href="../test/sections.php" class="<?= $currentPage === 'sections.php' ? 'active' : '' ?>">Sections</a>
             <a href="../Client/favorites.php" class="<?= $currentPage === 'favorites.php' ? 'active' : '' ?>">Favorites</a>
-            <?php if($currentPage == "admin.php"){ ?> <a href="../Admin/admin.php" class="<?= $currentPage === 'admin.php' ? 'active' : '' ?>">Manage</a> <?php } 
-            else{ ?> <a href="../Client/subscription.php" class="<?= $currentPage === 'subscription.php' ? 'active' : '' ?>">Subscription</a> <?php } ?>
+            <?php if($userRole){ ?>
+                <a href="../Admin/admin.php" class="<?= $currentPage === 'admin.php' ? 'active' : '' ?>">Manage</a> 
+            <?php }
+            else{ ?> 
+                <a href="../Client/subscription.php" class="<?= $currentPage === 'subscription.php' ? 'active' : '' ?>">Subscription</a> 
+            <?php } ?>
             <a href="../test/account.php" class="login-btn <?= $currentPage === 'account.php' ? 'active' : '' ?>">Account</a>
         </div>
     </nav>
