@@ -4,26 +4,7 @@ require_once ('../../Models/User.php');
 require_once ('../../Controllers/DBController.php');
 // عرّفي الصفحة الحالية بناءً على المتغير اللي بينرسل
 $currentPage = basename($_SERVER['PHP_SELF']);
-$conn = new DBController();
 
-
-if (isset($_SESSION['user'])) {
-    $userRoleQuery = "SELECT userROLE FROM user";
-    $userRole = $conn->select($userRoleQuery);
-    if (!$userRole) { 
-        exit("");
-    }
-    else {
-        $userRole = $userRole[0]['userROLE'] == 1;
-    }
-    
-} 
-
-else {
-    // مثلاً توجيه المستخدم لصفحة تسجيل الدخول
-    header("Location: ../Auth/index.php");
-    exit();
-}
 
 
 ?>
@@ -54,7 +35,7 @@ else {
             <a href="../test/news.php" class="<?= $currentPage === 'news.php' ? 'active' : '' ?>">News</a>
             <a href="../test/sections.php" class="<?= $currentPage === 'sections.php' ? 'active' : '' ?>">Sections</a>
             <a href="../Client/favorites.php" class="<?= $currentPage === 'favorites.php' ? 'active' : '' ?>">Favorites</a>
-            <?php if($userRole){ ?>
+            <?php if (($_SESSION['user']['userRole'])==1) {?>
                 <a href="../Admin/admin.php" class="<?= $currentPage === 'admin.php' ? 'active' : '' ?>">Manage</a> 
             <?php }
             else{ ?> 
