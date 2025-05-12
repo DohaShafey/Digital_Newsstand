@@ -159,8 +159,6 @@ class AuthController
         }
     }
 
-
-
     //logout method
     public function logout()
     {

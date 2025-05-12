@@ -3,7 +3,7 @@
 include_once (__DIR__ . "/../../Controllers/AuthController.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $auth = new AuthController();
+    $auth = new AuthController;
     $email = $_POST['email'] ?? '';
     if ($auth->forgetPassword($email)) {
         $_SESSION['Msg'] = $_SESSION['Msg'] ?? "Reset link sent to your email.";

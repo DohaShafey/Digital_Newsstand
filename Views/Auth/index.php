@@ -3,7 +3,7 @@
 include_once (__DIR__ . "/../../Controllers/ValidationController.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $validator = new ValidationController();
+    $validator = new ValidationController;
     $fields = ['email', 'password'];
     $success = $validator->handleAuthRequest($fields, 'login');
 

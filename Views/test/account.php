@@ -92,7 +92,7 @@ include_once (__DIR__ . "/../../Controllers/ValidationController.php");
         </div>
       </div>
 
-      <!--  الزرار ده لازم ياخد الدتا بجد و يوديها الداتابيز وياخدها تاني يعرضها في البروفايل -->
+      <!---  الزرار ده لازم ياخد الدتا بجد و يوديها الداتابيز وياخدها تاني يعرضها في البروفايل -->
       <div class="row" id="save"><span> </span><span class="action">Save</span></div>
     </div>
   </div>
