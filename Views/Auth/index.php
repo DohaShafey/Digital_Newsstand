@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/css/index.css">
 </head>
 <body>
-<header>
+    <header>
         <nav>
             <div class="logo">Digital Platform</div>
             <div class="nav-links">
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label class="remember-me">
                         <input type="checkbox" name="remember"> Remember Me
                     </label>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <a href="forget.php" class="forgot-password">Forgot Password?</a>
                 </div>
                 <!-- need to check first -->
                 <button class="login-button" type="submit" name="submit">Login</button>

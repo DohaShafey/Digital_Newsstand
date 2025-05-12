@@ -1,4 +1,8 @@
-<?php require_once '../assets/include/header.php'; ?>
+<?php require_once '../assets/include/header.php'; 
+
+include_once (__DIR__ . "/../../Controllers/AuthController.php");
+include_once (__DIR__ . "/../../Controllers/ValidationController.php");
+?>
 
 
   <div class="container">
@@ -10,11 +14,19 @@
       <p>You’ve supported independent journalism since 2025.</p>
 
       <div class="section">
-        <h3>Account information</h3>
-        <!-- المروض كل كلمة من هنا تتشال والي يتحط يبقى الداتا بتاعت اليوزر -->
-        <div class="row"><span>Username</span><span class="action"></span></div>
-        <div class="row"><span>Email address</span><span class="action"></span></div>
-        <div class="row"><span>Password</span><span class="action">Update</span></div>
+        <h3>Account Information</h3>
+        <div class="row">
+            <span>Username</span>
+            <span class="action"><?php echo htmlspecialchars($_SESSION['user']['userName'] ?? ''); ?></span>
+        </div>
+        <div class="row">
+            <span>Email Address</span>
+            <span class="action"><?php echo htmlspecialchars($_SESSION['user']['userEmail'] ?? ''); ?></span>
+        </div>
+        <div class="row">
+            <span>Password</span>
+            <span class="action"><a href="updateinfo.php">Update</a></span>
+        </div>
       </div>
 
       <div class="section">
