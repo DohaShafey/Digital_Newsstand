@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: May 09, 2025 at 02:24 AM
+-- Generation Time: May 12, 2025 at 07:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,15 +62,16 @@ CREATE TABLE `article` (
   `articleContent` text NOT NULL,
   `languageId` int(11) NOT NULL,
   `categoryId` int(11) NOT NULL,
-  `articlePublicationDate` date NOT NULL
+  `articlePublicationDate` date NOT NULL,
+  `articlelImg` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `article`
 --
 
-INSERT INTO `article` (`articleId`, `userId`, `articleTitle`, `articleAuthor`, `articleContent`, `languageId`, `categoryId`, `articlePublicationDate`) VALUES
-(3, 1, 'TEST_TITLE', 'doha', 'test_content', 1, 1, '2025-05-01');
+INSERT INTO `article` (`articleId`, `userId`, `articleTitle`, `articleAuthor`, `articleContent`, `languageId`, `categoryId`, `articlePublicationDate`, `articlelImg`) VALUES
+(3, 1, 'TEST_TITLE', 'doha', 'test_content', 1, 1, '2025-05-01', 'https://www.thebusinessguardians.com/wp-content/uploads/2021/03/New-Project-58-1024x683.jpg');
 
 --
 -- Triggers `article`
@@ -176,7 +177,7 @@ CREATE TABLE `payment` (
 
 INSERT INTO `payment` (`paymentId`, `paymentMethodId`, `paymentDate`) VALUES
 (1, 1, '2025-05-08 20:18:37'),
-(2, 1, '2025-05-08 20:18:42');
+(2, 2, '2025-05-08 20:18:42');
 
 -- --------------------------------------------------------
 
@@ -197,9 +198,30 @@ CREATE TABLE `plan` (
 --
 
 INSERT INTO `plan` (`planId`, `planName`, `planPrice`, `planDuration`, `planFeatures`) VALUES
-(1, 'basic', 9.00, 7, '✔ Access to basic content\r\n✔ 5GB Storage\r\n✔ Email Support'),
-(2, 'Standard', 19.00, 30, '✔ Everything in Basic\r\n✔ 50GB Storage\r\n✔ Priority Support'),
-(3, 'Premium', 29.00, 365, '✔ Everything in Standard\r\n✔ 200GB Storage\r\n✔ 1-on-1 Coaching');
+(1, 'basic', 9.99, 7, '✔ Access to basic content\r\n✔ 5GB Storage\r\n✔ Email Support'),
+(2, 'Standard', 19.99, 30, '✔ Everything in Basic\r\n✔ 50GB Storage\r\n✔ Priority Support'),
+(3, 'Premium', 29.99, 365, '✔ Everything in Standard\r\n✔ 200GB Storage\r\n✔ 1-on-1 Coaching');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `promo`
+--
+
+CREATE TABLE `promo` (
+  `promoId` int(11) NOT NULL,
+  `promoName` varchar(30) NOT NULL,
+  `promoValue` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `promo`
+--
+
+INSERT INTO `promo` (`promoId`, `promoName`, `promoValue`) VALUES
+(1, 'NOPROMO0', 0.00),
+(2, 'WELCOME05', 5.00),
+(3, 'SAVE10', 10.00);
 
 -- --------------------------------------------------------
 
@@ -233,15 +255,16 @@ CREATE TABLE `subscriptions` (
   `paymentId` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
   `startDate` timestamp NULL DEFAULT current_timestamp(),
-  `endDate` timestamp NULL DEFAULT NULL
+  `endDate` timestamp NULL DEFAULT NULL,
+  `paymentAmount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `subscriptions`
 --
 
-INSERT INTO `subscriptions` (`subscriptionId`, `planId`, `paymentId`, `userId`, `startDate`, `endDate`) VALUES
-(3, 1, 1, 1, '2025-05-08 22:08:54', '2025-05-15 22:08:54');
+INSERT INTO `subscriptions` (`subscriptionId`, `planId`, `paymentId`, `userId`, `startDate`, `endDate`, `paymentAmount`) VALUES
+(3, 1, 1, 1, '2025-05-08 22:08:54', '2025-05-15 22:08:54', 4.99);
 
 --
 -- Triggers `subscriptions`
@@ -257,6 +280,56 @@ CREATE TRIGGER `calculate_end_date` BEFORE INSERT ON `subscriptions` FOR EACH RO
     
     -- حساب endDate (startDate + المدة بالأيام)
     SET NEW.endDate = DATE_ADD(NEW.startDate, INTERVAL plan_duration DAY);
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscription_promo`
+--
+
+CREATE TABLE `subscription_promo` (
+  `promoId` int(11) NOT NULL,
+  `subscriptionId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `subscription_promo`
+--
+
+INSERT INTO `subscription_promo` (`promoId`, `subscriptionId`) VALUES
+(2, 3);
+
+--
+-- Triggers `subscription_promo`
+--
+DELIMITER $$
+CREATE TRIGGER `update_payment_amount_on_promo` AFTER UPDATE ON `subscription_promo` FOR EACH ROW BEGIN
+  DECLARE plan_price DECIMAL(10,2);
+  DECLARE promo_value DECIMAL(10,2);
+  DECLARE plan_id INT;
+
+  -- Get planId from subscriptions
+  SELECT planId INTO plan_id
+  FROM subscriptions
+  WHERE subscriptionId = NEW.subscriptionId;
+
+  -- Get plan price
+  SELECT planPrice INTO plan_price
+  FROM plan
+  WHERE planId = plan_id;
+
+  -- Get new promo value
+  SELECT promoValue INTO promo_value
+  FROM promo
+  WHERE promoId = NEW.promoId;
+
+  -- Update the paymentAmount in subscriptions
+  UPDATE subscriptions
+  SET paymentAmount = plan_price - IFNULL(promo_value, 0)
+  WHERE subscriptionId = NEW.subscriptionId;
 END
 $$
 DELIMITER ;
@@ -355,6 +428,12 @@ ALTER TABLE `plan`
   ADD PRIMARY KEY (`planId`);
 
 --
+-- Indexes for table `promo`
+--
+ALTER TABLE `promo`
+  ADD PRIMARY KEY (`promoId`);
+
+--
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
@@ -369,6 +448,13 @@ ALTER TABLE `subscriptions`
   ADD KEY `fk_plan` (`planId`),
   ADD KEY `fk_payment` (`paymentId`),
   ADD KEY `fk_user` (`userId`);
+
+--
+-- Indexes for table `subscription_promo`
+--
+ALTER TABLE `subscription_promo`
+  ADD PRIMARY KEY (`promoId`,`subscriptionId`),
+  ADD KEY `subscriptionId` (`subscriptionId`);
 
 --
 -- Indexes for table `user`
@@ -428,6 +514,12 @@ ALTER TABLE `plan`
   MODIFY `planId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `promo`
+--
+ALTER TABLE `promo`
+  MODIFY `promoId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
@@ -437,7 +529,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `subscriptionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `subscriptionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -477,6 +569,13 @@ ALTER TABLE `subscriptions`
   ADD CONSTRAINT `fk_payment` FOREIGN KEY (`paymentId`) REFERENCES `payment` (`paymentId`),
   ADD CONSTRAINT `fk_plan` FOREIGN KEY (`planId`) REFERENCES `plan` (`planId`),
   ADD CONSTRAINT `fk_user` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+
+--
+-- Constraints for table `subscription_promo`
+--
+ALTER TABLE `subscription_promo`
+  ADD CONSTRAINT `subscription_promo_ibfk_1` FOREIGN KEY (`subscriptionId`) REFERENCES `subscriptions` (`subscriptionId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `subscription_promo_ibfk_2` FOREIGN KEY (`promoId`) REFERENCES `promo` (`promoId`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
