@@ -5,7 +5,24 @@ require_once ('../../Controllers/DBController.php');
 // عرّفي الصفحة الحالية بناءً على المتغير اللي بينرسل
 $currentPage = basename($_SERVER['PHP_SELF']);
 
+$conn = new DBController();
 
+if (isset($_SESSION['user'])) {
+    $userRoleQuery = "SELECT userRole FROM user";
+    $userRole = $conn->select($userRoleQuery);
+    if (!$userRole) { 
+        exit("");
+    }
+    else {
+        $userRole = $userRole[0]['userRole'] == 1;
+    }
+} 
+
+else {
+    // مثلاً توجيه المستخدم لصفحة تسجيل الدخول
+    header("Location: ../Auth/index.php");
+    exit();
+}
 
 ?>
 
