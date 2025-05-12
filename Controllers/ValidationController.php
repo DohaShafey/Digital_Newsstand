@@ -23,8 +23,8 @@ class ValidationController
 
         $user->setUserEmail($db->escape($_POST['email'] ?? null));
         $user->setUserPassword($db->escape($_POST['password'] ?? null));
-        $user->setUserName($db->escape($_POST['userName'] ?? null));
-        $user->setLanguageId($db->escape($_POST['languageId'] ?? null));
+        $user->setUserName($db->escape($_POST['name'] ?? null));
+        $user->setLanguageId($db->escape($_POST['language'] ?? null));
 
         switch ($action) {
             case 'login':
