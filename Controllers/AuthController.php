@@ -1,7 +1,7 @@
 <?php
 
-include_once(__DIR__ . "../../Models/User.php");
-include_once(__DIR__ . "../../Controllers/DBController.php");
+include_once (__DIR__ . "/../Models/User.php");
+include_once (__DIR__ . "/DBController.php");
 
 class AuthController
 {
@@ -10,119 +10,87 @@ class AuthController
     public function __construct()
     {
         $this->db = new DBController;
+        $this->db->openConnection();
     }
 
     //login method
     public function login(User $user)
     {
-
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        $userEmail = $user->getUserEmail();
-        $userPassword = $user->getUserPassword();
+        $email = $this->db->escape($user->getUserEmail());
+        $password = $this->db->escape($user->getUserPassword());
 
-        if ($this->db->openConnection()) {
-            $query = "SELECT * FROM user WHERE userEmail = '$userEmail' AND userPassword = '$userPassword'";
-            $result = $this->db->select($query);
-            if ($result === false) {
-                $_SESSION['errMsg'] = "Error in query";
-                return false;
-            } else {
-                if (count($result) == 0) {
-                    $_SESSION['errMsg'] = "You have entered wrong email or password.";
-                    return false;
-                } else {
-                    session_regenerate_id(true);
-                    $_SESSION['user'] = [
-                        'userId' => $result[0]['userId'],
-                        'userName' => $result[0]['userName'],
-                        'userEmail' => $result[0]['userEmail'],
-                        'userPassword' => $result[0]['userPassword'],
-                        'userRole' => $result[0]['userRole'],
-                        'languageId' => $result[0]['languageId']
-                    ];
-                    return true;
-                }
-            }
+        $query = "SELECT * FROM user WHERE userEmail = '$email' AND userPassword = '$password'";
+        $result = $this->db->select($query);
+
+        if ($result === false) {
+            $_SESSION['errMsg'] = "Error in query";
+            return false;
         }
+
+        if (count($result) == 0) {
+            $_SESSION['errMsg'] = "You have entered wrong email or password.";
+            return false;
+        }
+
+        session_regenerate_id(true);
+        $_SESSION['user'] = [
+            'userId' => $result[0]['userId'],
+            'userName' => $result[0]['userName'],
+            'userEmail' => $result[0]['userEmail'],
+            'userPassword' => $result[0]['userPassword'],
+            'userRole' => $result[0]['userRole'],
+            'languageId' => $result[0]['languageId']
+        ];
+
+        return true;
     }
 
-    //registeration method
+    //register method
     public function register(User $user)
     {
-        $this->db = new DBContoller;
-        if ($this->db->openConnection()) {
-            $query = "INSERT INTO `user` VALUES('','$user->getUserName()')";
-        }
-    }
-}
-
-?>
-
-
-
-
-
-<?php
-//  ------------------------------------------------------------------------------------------------------------ 2
-/* 
-require_once '../../Models/User.php';
-require_once '../../Controllers/DBController.php';
-class AuthController {
-    protected $db;
-
-    
-    public function login(User $user) {
-        $db =new DBController();
-        $userEmail = $user->getUserEmail();
-        $userPassword = $user->getPassword();
-        if($db->openConnection()){
-            $query = "SELECT * FROM user WHERE userEmail = '$userEmail' AND userPassword = '$userPassword'";
-            $result = $this->db->select($query);
-            if(!$result){
-                echo "Error: ". $db->lastErrorMsg();
-                return false;
-            }
-            else{
-                return true;
-            }
-
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
 
-        deleted
+        // Get the user input data and sanitize it
+        $name = $this->db->escape($user->getUserName());
+        $email = $this->db->escape($user->getUserEmail());
+        $password = $this->db->escape($user->getUserPassword());
+        $languageId = $user->getLanguageId();
 
-        if ($result && count($result) === 1) {
-            $user = $result[0];
-            if ($password === $user['password']) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                return true;
-            }
+        // Check if the email already exists
+        $queryCheckEmail = "SELECT * FROM user WHERE userEmail = '$email'";
+        $result = $this->db->select($queryCheckEmail);
+
+        if ($result) {
+            $_SESSION['errMsg'] = "This email is already registered.";
+            return false;
         }
+        
 
-        return false; 
-    }
+        $query = "INSERT INTO user (userName, userEmail, userPassword, userRole , languageId) 
+                VALUES ('$name', '$email', '$password', 2, '$languageId')";
 
-    public function logout() {
-        session_unset();
-        session_destroy();
-    }
-
-    public function isLoggedIn() {
-        return isset($_SESSION['userId']);
-    }
-
-    public function getCurrentUser() {
-        if ($this->isLoggedIn()) {
-            return [
-                'userId' => $_SESSION['userId'],
-                'userName' => $_SESSION['userName']
+        if ($this->db->execute($query)) {
+            session_regenerate_id(true);
+            $_SESSION['user'] = [
+                'userId' => $result[0]['userId'],
+                'userName' => $result[0]['userName'],
+                'userEmail' => $result[0]['userEmail'],
+                'userPassword' => $result[0]['userPassword'],
+                'userRole' => $result[0]['userRole'],
+                'languageId' => $result[0]['languageId']
             ];
+            return true;
+        } else {
+            $_SESSION['errMsg'] = "There was an error during registration. Please try again.";
+            return false;
         }
-        return null;
     }
 }
+
 ?>
-*/

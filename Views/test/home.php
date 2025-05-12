@@ -32,7 +32,7 @@
         </section>
         
         <section class="game">
-            <a href="games.php">
+            <a href="../Client/games.php">
                 <h2>Play Games Now !!</h2>
             </a>
         </section>
