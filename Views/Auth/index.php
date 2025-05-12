@@ -78,6 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </footer>
 
-    <script src="login.js"></script>
+    <!--<script src="login.js"></script>-->
 </body>
 </html>
