@@ -14,7 +14,7 @@ if (isset($_SESSION['user'])) {
         exit("");
     }
     else {
-        $userRole = $userRole[0]['userRole'] == 1;
+        $userRole = $userRole[0]['userRole'] == 1; //admin
     }
 } 
 
