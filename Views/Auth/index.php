@@ -8,8 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $success = $validator->handleAuthRequest($fields, 'login');
 
     if ($success) {
+        $_SESSION['check'] = $success;
         header("Location: ../test/home.php");
-        exit;
+        $_SESSION['check'] = $success;
+        exit();
     } else {
         $errorMsg = $_SESSION['errMsg'] ?? "Invalid login.";
     }

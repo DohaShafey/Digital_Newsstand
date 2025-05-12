@@ -1,4 +1,5 @@
 <?php require_once '../assets/include/header.php'; ?>
+<?php require_once '../assets/include/authMiddleware.php'; ?>
 
     <main>
         <section class="hero">
