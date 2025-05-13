@@ -2,9 +2,9 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Generation Time: May 12, 2025 at 07:43 PM
--- Server version: 10.4.32-MariaDB
+-- Host: 127.0.0.1
+-- Generation Time: 13 مايو 2025 الساعة 07:05
+-- إصدار الخادم: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 
 DELIMITER $$
 --
--- Procedures
+-- الإجراءات
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insert_subscription` (IN `p_planId` INT, IN `p_paymentId` INT, IN `p_userId` INT)   BEGIN
     DECLARE plan_duration INT;
@@ -51,7 +51,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article`
+-- بنية الجدول `article`
 --
 
 CREATE TABLE `article` (
@@ -63,18 +63,18 @@ CREATE TABLE `article` (
   `languageId` int(11) NOT NULL,
   `categoryId` int(11) NOT NULL,
   `articlePublicationDate` date NOT NULL,
-  `articlelImg` varchar(255) NOT NULL
+  `articleImg` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `article`
+-- إرجاع أو استيراد بيانات الجدول `article`
 --
 
-INSERT INTO `article` (`articleId`, `userId`, `articleTitle`, `articleAuthor`, `articleContent`, `languageId`, `categoryId`, `articlePublicationDate`, `articlelImg`) VALUES
+INSERT INTO `article` (`articleId`, `userId`, `articleTitle`, `articleAuthor`, `articleContent`, `languageId`, `categoryId`, `articlePublicationDate`, `articleImg`) VALUES
 (3, 1, 'TEST_TITLE', 'doha', 'test_content', 1, 1, '2025-05-01', 'https://www.thebusinessguardians.com/wp-content/uploads/2021/03/New-Project-58-1024x683.jpg');
 
 --
--- Triggers `article`
+-- القوادح `article`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_article_author_insert` BEFORE INSERT ON `article` FOR EACH ROW BEGIN
@@ -86,7 +86,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- بنية الجدول `category`
 --
 
 CREATE TABLE `category` (
@@ -95,16 +95,23 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `category`
+-- إرجاع أو استيراد بيانات الجدول `category`
 --
 
 INSERT INTO `category` (`categoryId`, `categoryName`) VALUES
-(1, 'Technology ');
+(6, 'Arts'),
+(3, 'Business'),
+(8, 'Education'),
+(9, 'Environment'),
+(7, 'Health'),
+(5, 'Sports'),
+(1, 'Technology '),
+(4, 'World');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `content_engagement`
+-- بنية الجدول `content_engagement`
 --
 
 CREATE TABLE `content_engagement` (
@@ -114,7 +121,7 @@ CREATE TABLE `content_engagement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `content_engagement`
+-- إرجاع أو استيراد بيانات الجدول `content_engagement`
 --
 
 INSERT INTO `content_engagement` (`userId`, `articleId`, `engagementType`) VALUES
@@ -123,7 +130,7 @@ INSERT INTO `content_engagement` (`userId`, `articleId`, `engagementType`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `feedback`
+-- بنية الجدول `feedback`
 --
 
 CREATE TABLE `feedback` (
@@ -135,7 +142,7 @@ CREATE TABLE `feedback` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `feedback`
+-- إرجاع أو استيراد بيانات الجدول `feedback`
 --
 
 INSERT INTO `feedback` (`feedbackId`, `userId`, `feedbackStatus`, `feedbackComment`, `feedbackDate`) VALUES
@@ -144,7 +151,7 @@ INSERT INTO `feedback` (`feedbackId`, `userId`, `feedbackStatus`, `feedbackComme
 -- --------------------------------------------------------
 
 --
--- Table structure for table `language`
+-- بنية الجدول `language`
 --
 
 CREATE TABLE `language` (
@@ -153,7 +160,7 @@ CREATE TABLE `language` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `language`
+-- إرجاع أو استيراد بيانات الجدول `language`
 --
 
 INSERT INTO `language` (`languageId`, `languageName`) VALUES
@@ -162,7 +169,7 @@ INSERT INTO `language` (`languageId`, `languageName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
+-- بنية الجدول `payment`
 --
 
 CREATE TABLE `payment` (
@@ -172,7 +179,7 @@ CREATE TABLE `payment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `payment`
+-- إرجاع أو استيراد بيانات الجدول `payment`
 --
 
 INSERT INTO `payment` (`paymentId`, `paymentMethodId`, `paymentDate`) VALUES
@@ -182,7 +189,7 @@ INSERT INTO `payment` (`paymentId`, `paymentMethodId`, `paymentDate`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plan`
+-- بنية الجدول `plan`
 --
 
 CREATE TABLE `plan` (
@@ -194,7 +201,7 @@ CREATE TABLE `plan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `plan`
+-- إرجاع أو استيراد بيانات الجدول `plan`
 --
 
 INSERT INTO `plan` (`planId`, `planName`, `planPrice`, `planDuration`, `planFeatures`) VALUES
@@ -205,7 +212,7 @@ INSERT INTO `plan` (`planId`, `planName`, `planPrice`, `planDuration`, `planFeat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `promo`
+-- بنية الجدول `promo`
 --
 
 CREATE TABLE `promo` (
@@ -215,7 +222,7 @@ CREATE TABLE `promo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `promo`
+-- إرجاع أو استيراد بيانات الجدول `promo`
 --
 
 INSERT INTO `promo` (`promoId`, `promoName`, `promoValue`) VALUES
@@ -226,7 +233,7 @@ INSERT INTO `promo` (`promoId`, `promoName`, `promoValue`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- بنية الجدول `role`
 --
 
 CREATE TABLE `role` (
@@ -235,7 +242,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `role`
+-- إرجاع أو استيراد بيانات الجدول `role`
 --
 
 INSERT INTO `role` (`roleId`, `roleName`) VALUES
@@ -246,7 +253,7 @@ INSERT INTO `role` (`roleId`, `roleName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscriptions`
+-- بنية الجدول `subscriptions`
 --
 
 CREATE TABLE `subscriptions` (
@@ -260,14 +267,14 @@ CREATE TABLE `subscriptions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `subscriptions`
+-- إرجاع أو استيراد بيانات الجدول `subscriptions`
 --
 
 INSERT INTO `subscriptions` (`subscriptionId`, `planId`, `paymentId`, `userId`, `startDate`, `endDate`, `paymentAmount`) VALUES
 (3, 1, 1, 1, '2025-05-08 22:08:54', '2025-05-15 22:08:54', 4.99);
 
 --
--- Triggers `subscriptions`
+-- القوادح `subscriptions`
 --
 DELIMITER $$
 CREATE TRIGGER `calculate_end_date` BEFORE INSERT ON `subscriptions` FOR EACH ROW BEGIN
@@ -287,7 +294,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscription_promo`
+-- بنية الجدول `subscription_promo`
 --
 
 CREATE TABLE `subscription_promo` (
@@ -296,14 +303,14 @@ CREATE TABLE `subscription_promo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `subscription_promo`
+-- إرجاع أو استيراد بيانات الجدول `subscription_promo`
 --
 
 INSERT INTO `subscription_promo` (`promoId`, `subscriptionId`) VALUES
 (2, 3);
 
 --
--- Triggers `subscription_promo`
+-- القوادح `subscription_promo`
 --
 DELIMITER $$
 CREATE TRIGGER `update_payment_amount_on_promo` AFTER UPDATE ON `subscription_promo` FOR EACH ROW BEGIN
@@ -337,7 +344,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- بنية الجدول `user`
 --
 
 CREATE TABLE `user` (
@@ -350,7 +357,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- إرجاع أو استيراد بيانات الجدول `user`
 --
 
 INSERT INTO `user` (`userId`, `userName`, `userEmail`, `userPassword`, `userRole`, `languageId`) VALUES
@@ -359,7 +366,7 @@ INSERT INTO `user` (`userId`, `userName`, `userEmail`, `userPassword`, `userRole
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_category`
+-- بنية الجدول `user_category`
 --
 
 CREATE TABLE `user_category` (
@@ -368,7 +375,7 @@ CREATE TABLE `user_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user_category`
+-- إرجاع أو استيراد بيانات الجدول `user_category`
 --
 
 INSERT INTO `user_category` (`userId`, `categoryId`) VALUES
@@ -487,7 +494,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -538,11 +545,11 @@ ALTER TABLE `user`
   MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- قيود الجداول المُلقاة.
 --
 
 --
--- Constraints for table `article`
+-- قيود الجداول `article`
 --
 ALTER TABLE `article`
   ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -550,20 +557,20 @@ ALTER TABLE `article`
   ADD CONSTRAINT `article_ibfk_3` FOREIGN KEY (`categoryId`) REFERENCES `category` (`categoryId`);
 
 --
--- Constraints for table `content_engagement`
+-- قيود الجداول `content_engagement`
 --
 ALTER TABLE `content_engagement`
   ADD CONSTRAINT `content_engagement_ibfk_1` FOREIGN KEY (`articleId`) REFERENCES `article` (`articleId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `content_engagement_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `feedback`
+-- قيود الجداول `feedback`
 --
 ALTER TABLE `feedback`
   ADD CONSTRAINT `userId2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
 
 --
--- Constraints for table `subscriptions`
+-- قيود الجداول `subscriptions`
 --
 ALTER TABLE `subscriptions`
   ADD CONSTRAINT `fk_payment` FOREIGN KEY (`paymentId`) REFERENCES `payment` (`paymentId`),
@@ -571,21 +578,21 @@ ALTER TABLE `subscriptions`
   ADD CONSTRAINT `fk_user` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
 
 --
--- Constraints for table `subscription_promo`
+-- قيود الجداول `subscription_promo`
 --
 ALTER TABLE `subscription_promo`
   ADD CONSTRAINT `subscription_promo_ibfk_1` FOREIGN KEY (`subscriptionId`) REFERENCES `subscriptions` (`subscriptionId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `subscription_promo_ibfk_2` FOREIGN KEY (`promoId`) REFERENCES `promo` (`promoId`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `user`
+-- قيود الجداول `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`userRole`) REFERENCES `role` (`roleId`) ON UPDATE CASCADE,
   ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`languageId`) REFERENCES `language` (`languageId`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `user_category`
+-- قيود الجداول `user_category`
 --
 ALTER TABLE `user_category`
   ADD CONSTRAINT `user_category_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`),
