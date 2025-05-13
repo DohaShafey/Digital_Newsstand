@@ -49,7 +49,7 @@ else {
         <!-- لازم تتعدل و يكون الشرط على اساس اليوظيفه بتاعت اليوزر -->
         <div class="nav-links">
             <a href="../test/home.php" class="<?= $currentPage === 'home.php' ? 'active' : '' ?>">Home</a>
-            <a href="../test/news.php" class="<?= $currentPage === 'news.php' ? 'active' : '' ?>">News</a>
+            <a href="../test/news.php" class="<?= $currentPage === 'news.php' ? 'active' : '' ?>">For'U</a>
             <a href="../test/sections.php" class="<?= $currentPage === 'sections.php' ? 'active' : '' ?>">Sections</a>
             <a href="../Client/favorites.php" class="<?= $currentPage === 'favorites.php' ? 'active' : '' ?>">Favorites</a>
             <?php if (($_SESSION['user']['userRole'])==1) {?>

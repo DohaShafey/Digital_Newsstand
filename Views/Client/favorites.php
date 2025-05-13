@@ -6,8 +6,7 @@
 
         <div class="favorites-tabs">
             <button class="tab-btn active" data-tab="articles">Saved Articles</button>
-            <button class="tab-btn" data-tab="sections">Favorite Sections</button>
-            <button class="tab-btn" data-tab="topics">Followed Topics</button>
+            <button class="tab-btn" data-tab="sections">Followed Sections</button>
         </div>
 
         <div class="tab-content active" id="articles">
@@ -52,30 +51,14 @@
                 </div>
 
                 <div class="section-card">
-                    <div class="section-icon">🎮</div>
-                    <h3>Games</h3>
+                    <div class="section-icon">⚽</div>
+                    <h3>Sports</h3>
                     <p>Latest news on games and entertainment</p>
                     <button class="unfollow-btn">Unfollow</button>
                 </div>
             </div>
         </div>
 
-        <div class="tab-content" id="topics">
-            <div class="followed-topics">
-                <!-- Followed Topics -->
-                <div class="topic-card">
-                    <h3># Artificial_Intelligence</h3>
-                    <span class="articles-count">25 Articles</span>
-                    <button class="unfollow-btn">Unfollow</button>
-                </div>
-
-                <div class="topic-card">
-                    <h3># World_Cup</h3>
-                    <span class="articles-count">18 Articles</span>
-                    <button class="unfollow-btn">Unfollow</button>
-                </div>
-            </div>
-        </div>
     </main>
 
 <?php require_once '../assets/include/footer.php'; ?>

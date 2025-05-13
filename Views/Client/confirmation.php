@@ -24,11 +24,11 @@
        
           <div class="info">
             <div class="column-2">
-                <label for="firs-name">Firs Name</label>
+                <label for="firs-name">Name</label>
                 <input type="text" id="firs-name" />
             </div>
             <div class="column-2">
-                <label for="last-name">Last Name</label>
+                <label for="last-name">Promocode</label>
                 <input type="text" id="last-name"/>
             </div>
             <div class="column-2">
