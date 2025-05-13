@@ -8,11 +8,7 @@ class DBController {
     public $conn;
 
     public function openConnection() {
-
-        $this->conn = new mysqli($this->dbHost, $this->dbUser, $this->dbPassword, $this->dbName, 3306);
-
-
-
+        $this->conn = new mysqli($this->dbHost, $this->dbUser, $this->dbPassword, $this->dbName,3307);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
