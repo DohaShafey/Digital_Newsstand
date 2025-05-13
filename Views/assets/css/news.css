@@ -1,271 +1,240 @@
-body{
-    font-family: 'Times New Roman', Times, serif;
+/* news.css - Modified for "For You" Layout */
+
+body {
+    font-family: 'Times New Roman', Times, serif; /* As originally specified */
+    background-color: #f4f4f4; /* Added a light background */
+    margin: 0; /* Ensure no default body margin */
 }
-.news-container {
-    max-width: 1400px;
+
+.news-container.for-you-layout { /* Specific class for this layout */
+    max-width: 1200px; /* Adjusted max-width */
     margin: 2rem auto;
     display: grid;
-    grid-template-columns: 250px 1fr 300px;
+    /* Two columns: Fixed width for games, flexible for news */
+    grid-template-columns: 220px 1fr; /* Adjusted sidebar width slightly */
     gap: 2rem;
     padding: 0 1rem;
 }
 
-/* Sidebar Styles */
-.filters-sidebar {
+/* --- Section 1: Games Sidebar --- */
+.games-sidebar { /* Renamed from filters-sidebar */
+    background: #ffffff; /* Explicit white background */
+    padding: 1.5rem 1rem; /* Increased padding slightly */
+    border-radius: 8px; /* Slightly larger border radius */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08); /* Slightly stronger shadow */
+    height: fit-content; /* Will adjust height based on content */
+    border: 1px solid #e0e0e0; /* Add a light border */
+}
+
+.games-section { /* Renamed from filter-section */
+    margin-bottom: 0; /* Remove bottom margin if only one section */
+}
+
+.games-section h3 {
+    color: #1a202c; /* Darker heading color */
+    margin-top: 0;
+    margin-bottom: 1.2rem; /* Increase space below heading */
+    font-size: 1.15rem; /* Slightly larger heading */
+    border-bottom: 2px solid #4a5568; /* Accent border */
+    padding-bottom: 0.6rem;
+    text-align: center; /* Center the heading */
+}
+
+/* Styling the UL list for games */
+.games-list { /* Renamed from games-options */
+    list-style: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.games-list li {
+    margin-bottom: 0.5rem; /* Add space between list items */
+}
+
+.games-list li:last-child {
+    margin-bottom: 0; /* Remove margin from last item */
+}
+
+.game-link { /* Style for game links */
+    display: block; /* Make link fill the list item */
+    padding: 0.7rem 1rem; /* Increase padding */
+    color: #2d3748; /* Slightly darker link color */
+    text-decoration: none;
+    border-radius: 4px; /* Consistent border radius */
+    border: 1px solid ; /* Add border to each link */
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95rem;
+    background-color: #f7fafc; /* Very light background */
+    text-align: center; /* Center text in link */
+    text-decoration: none;
+  
+}
+
+.game-link:hover {
+    border-color: #919caa; /* Darker border on hover */
+    background-color: #919caa; /* Darker border on hover */
+    color: #1a202c; /* Darker text on hover */
+}
+
+
+/* --- Section 2: Main News Content --- */
+.news-content-foryou { /* Renamed from news-content */
     background: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    height: fit-content;
+    padding: 1.5rem 2rem; /* Adjusted padding */
+    border-radius: 8px; /* Match sidebar */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08); /* Match sidebar */
+    border: 1px solid #e0e0e0; /* Match sidebar */
+    min-height: 400px; /* Ensure it has some height even if empty */
 }
 
-.filter-section {
-    margin-bottom: 1.5rem;
-}
-
-.filter-section h3 {
-    color: #1f2937;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.filter-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.filter-option {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #4b5563;
-    cursor: pointer;
-}
-
-.date-filter {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.25rem;
-    color: #4b5563;
-}
-
-/* Main Content Styles */
-.news-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.news-header {
-    margin-bottom: 2rem;
+.news-header { /* Kept for the title */
+    margin-bottom: 1.5rem; /* Reduced margin */
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
 }
 
 .news-header h1 {
     color: #1f2937;
-    margin-bottom: 1rem;
+    margin: 0; /* Reset margin */
+    font-size: 1.6rem;
 }
 
-.news-controls {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.search-box {
-    display: flex;
-    gap: 0.5rem;
-    flex: 1;
-}
-
-.search-box input {
-    flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.25rem;
-}
-
-.search-btn {
-    padding: 0.5rem 1rem;
-    background: #333537;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-}
-
-.sort-select {
-    padding: 0.5rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.25rem;
-    color: #4b5563;
-}
-
-.news-grid {
+.news-grid-foryou { /* Renamed from news-grid */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-bottom: 2rem;
 }
 
+/* Styles for the news card itself */
 .news-card {
     border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
+    border-radius: 8px; /* Match container radius */
     overflow: hidden;
-    transition: transform 0.2s;
+    transition: box-shadow 0.2s ease-in-out;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .news-card:hover {
-    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Slightly more pronounced hover */
+}
+
+.news-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .news-card img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #f0f0f0; /* Add subtle line below image */
 }
 
 .news-card-content {
-    padding: 1rem;
+    padding: 1rem 1.2rem; /* Adjust padding */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-content .category {
+    display: inline-block;
+    background-color: #edf2f7; /* Lighter category background */
+    color: #4a5568; /* Darker category text */
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px; /* Pill shape */
+    font-size: 0.75rem;
+    margin-bottom: 0.6rem;
+    align-self: flex-start;
+    font-weight: 500;
 }
 
 .news-card-content h3 {
-    color: #1f2937;
+    color: #2d3748; /* Darker title */
+    margin-top: 0; /* Remove top margin */
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.15rem; /* Slightly larger title */
+    line-height: 1.4;
+    font-weight: 600; /* Bolder title */
+}
+
+.news-card-content p {
+    font-size: 0.9rem;
+    color: #4a5568; /* Slightly darker text */
+    line-height: 1.6; /* Increased line height */
+    margin-bottom: 1rem;
+    flex-grow: 1;
 }
 
 .news-meta {
     display: flex;
     justify-content: space-between;
-    color: #6b7280;
-    font-size: 0.875rem;
-    margin-top: 1rem;
-}
-
-/* Trending Sidebar Styles */
-.trending-sidebar {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    height: fit-content;
-}
-
-.trending-section {
-    margin-bottom: 2rem;
-}
-
-.trending-section h3 {
-    color: #1f2937;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.trending-news {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.trending-item {
-    display: flex;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.trending-item:last-child {
-    border-bottom: none;
-}
-
-.trending-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 0.25rem;
-}
-
-.trending-item-content h4 {
-    font-size: 0.9rem;
-    color: #1f2937;
-    margin-bottom: 0.25rem;
-}
-
-.trending-item-content span {
+    align-items: center;
+    color: #718096; /* Lighter meta text */
     font-size: 0.8rem;
-    color: #6b7280;
+    margin-top: auto;
+    padding-top: 0.75rem; /* Increased padding */
+    border-top: 1px solid #edf2f7; /* Lighter separator */
 }
 
-/* Pagination Styles */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
+.no-articles-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #555;
+    padding: 3rem 1rem;
+    font-size: 1.1rem;
+    background-color: #f9f9f9; /* Light background for message area */
+    border-radius: 6px;
 }
 
-.pagination-btn {
-    padding: 0.5rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.25rem;
-    background: white;
-    cursor: pointer;
-}
 
-.pagination-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.page-numbers {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.page-numbers span {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.25rem;
-    cursor: pointer;
-}
-
-.page-numbers span.active {
-    background: #333537;
-    color: white;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .news-container {
-        grid-template-columns: 200px 1fr;
+/* --- Responsive Design Adjustments --- */
+@media (max-width: 992px) {
+    .news-container.for-you-layout {
+        grid-template-columns: 200px 1fr; /* Keep sidebar width consistent */
     }
-    .trending-sidebar {
-        display: none;
+    .news-grid-foryou {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .news-container {
+    .news-container.for-you-layout {
         grid-template-columns: 1fr;
+        gap: 1.5rem; /* Consistent gap */
     }
-    .filters-sidebar {
+    .games-sidebar {
         display: none;
     }
-    .news-controls {
-        flex-direction: column;
+    .news-content-foryou {
+        padding: 1.5rem; /* Adjust padding */
     }
-    .search-box {
-        width: 100%;
+    .news-grid-foryou {
+        grid-template-columns: 1fr;
+        gap: 1.5rem; /* Consistent gap */
     }
-    .sort-select {
-        width: 100%;
+     .news-header h1 {
+        font-size: 1.5rem;
+    }
+    .news-card img {
+        height: 180px; /* Keep height consistent */
+    }
+}
+
+@media (max-width: 480px) {
+    .news-card-content h3 {
+        font-size: 1.05rem; /* Slightly smaller title on very small screens */
+    }
+    .news-card-content p {
+        font-size: 0.85rem;
+    }
+     .news-content-foryou {
+        padding: 1rem;
     }
 }
