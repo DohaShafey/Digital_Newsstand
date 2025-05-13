@@ -1,15 +1,18 @@
 <?php require_once '../assets/include/header.php'; ?>
- 
-    
-    <main>
-        <section class="admin-section">
-            <h2>Manage Articles</h2>
-            
+
+<main>
+    <section class="admin-section">
+        <div class="tab-titles">
+            <h2 id="articlesTab" class="activeBtn disableBtn">Manage Articles</h2>
+            <h2 id="categoriesTab" class="disableBtn">Manage Categories</h2>
+        </div>
+
+        <!-- === Start: Articles Section === -->
+        <div id="articlesSection">
             <div class="action-buttons">
                 <button id="addArticleBtn">Add Article</button>
                 <button id="removeArticleBtn">Remove Article</button>
                 <button id="updateArticleBtn">Update Article</button>
-                <button id="addCategoryBtn">Add Category</button>
             </div>
 
             <!-- Add Article Form -->
@@ -30,7 +33,7 @@
                 <input type="number" id="articleIdToRemove" placeholder="Article ID to Remove" required>
                 <button type="submit">Remove Article</button>
             </form>
-            
+
             <!-- Update Article Form -->
             <form id="updateArticleForm" class="content-form" style="display:none;">
                 <h3>Update Article</h3>
@@ -43,17 +46,59 @@
                 <input type="date" id="updatedDate" required>
                 <button type="submit">Update Article</button>
             </form>
-            
+        </div>
+        <!-- === End: Articles Section === -->
+
+        <!-- === Start: Categories Section === -->
+        <div id="categoriesSection" style="display: none;">
+            <div class="action-buttons">
+                <button id="addCategoryBtn">Add Category</button>
+                <button id="removeCategoryBtn">Remove Category</button>
+            </div>
+
             <!-- Add Category Form -->
-            <form id="addCategoryForm" class="content-form" style="display:none;">
+            <form id="addCategoryForm" class="content-form">
                 <h3>Add Category</h3>
                 <input type="text" id="categoryIdToAdd" placeholder="Category Name to Add" required>
                 <button type="submit">Add Category</button>
             </form>
-            
-            
-        </section>
-    </main>
+
+            <!-- Remove Category Form -->
+            <form id="removeCategoryForm" class="content-form">
+                <h3>Remove Category</h3>
+                <input type="text" id="categoryIdToremove" placeholder="Category Name to Remove" required>
+                <button type="submit">Remove Category</button>
+            </form>
+        </div>
+        <!-- === End: Categories Section === -->
+
+    </section>
+</main>
+
+<script>const articlesTab = document.getElementById('articlesTab');
+const categoriesTab = document.getElementById('categoriesTab');
+
+const articlesSection = document.querySelector('.action-buttons').parentElement; // admin-section
+const categoriesSection = document.getElementById('categoriesSection');
+
+// عند الضغط على "Manage Articles"
+articlesTab.addEventListener('click', () => {
+    articlesTab.classList.add('activeBtn');
+    categoriesTab.classList.remove('activeBtn');
+
+    articlesSection.style.display = 'block';
+    categoriesSection.style.display = 'none';
+});
+
+// عند الضغط على "Manage Categories"
+categoriesTab.addEventListener('click', () => {
+    categoriesTab.classList.add('activeBtn');
+    articlesTab.classList.remove('activeBtn');
+
+    articlesSection.style.display = 'none';
+    categoriesSection.style.display = 'block';
+});
+
+</script>
 
 <?php require_once '../assets/include/footer.php'; ?>
-

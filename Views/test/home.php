@@ -1,4 +1,5 @@
 <?php require_once '../assets/include/header.php'; ?>
+<?php require_once '../assets/include/authMiddleware.php'; ?>
 
     <main>
         <section class="hero">
@@ -32,7 +33,7 @@
         </section>
         
         <section class="game">
-            <a href="games.php">
+            <a href="../Client/games.php">
                 <h2>Play Games Now !!</h2>
             </a>
         </section>

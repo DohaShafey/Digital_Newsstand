@@ -10,11 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const removeArticleForm = document.getElementById('removeArticleForm');
     const updateArticleForm = document.getElementById('updateArticleForm');
     const addCategoryForm = document.getElementById('addCategoryForm');
+    const removeCategoryForm = document.getElementById('removeCategoryForm');
 
     const addArticleBtn = document.getElementById('addArticleBtn');
     const removeArticleBtn = document.getElementById('removeArticleBtn');
     const updateArticleBtn = document.getElementById('updateArticleBtn');
     const addCategoryBtn = document.getElementById('addCategoryBtn');
+    const removeCategoryBtn = document.getElementById('removeCategoryBtn');
 
     // التبديل بين النماذج
     addArticleBtn.addEventListener('click', function() {
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         removeArticleForm.style.display = 'none';
         updateArticleForm.style.display = 'none';
         addCategoryForm.style.display = 'none';
+        removeCategoryForm.style.display = 'none';
     });
     
     removeArticleBtn.addEventListener('click', function() {
@@ -29,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addArticleForm.style.display = 'none';
         updateArticleForm.style.display = 'none';
         addCategoryForm.style.display = 'none';
+        removeCategoryForm.style.display = 'none';
     });
     
     updateArticleBtn.addEventListener('click', function() {
@@ -36,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addArticleForm.style.display = 'none';
         removeArticleForm.style.display = 'none';
         addCategoryForm.style.display = 'none';
+        removeCategoryForm.style.display = 'none';
     });
     
     addCategoryBtn.addEventListener('click', function() {
@@ -43,6 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
         updateArticleForm.style.display = 'none';
         addArticleForm.style.display = 'none';
         removeArticleForm.style.display = 'none';
+        removeCategoryForm.style.display = 'none';
+    });
+
+    removeCategoryBtn.addEventListener('click', function() {
+        removeCategoryForm.style.display = 'block';
+        updateArticleForm.style.display = 'none';
+        addArticleForm.style.display = 'none';
+        removeArticleForm.style.display = 'none';
+        addCategoryForm.style.display = 'none';
     });
 
     // إضافة مقال
@@ -111,6 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // إضافة قسم
     addCategoryForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // const articleId = document.getElementById('addCategoryForm').value;
+    
+        // articles = articles.filter(article => article.id != articleId);
+        // localStorage.setItem('articles', JSON.stringify(articles));
+        addCategoryForm.reset();
+        alert('تم اضافة القسم بنجاح');
+    });
+
+    removeCategoryForm.addEventListener('submit', function(e) {
         e.preventDefault();
         // const articleId = document.getElementById('addCategoryForm').value;
     

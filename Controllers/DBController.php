@@ -1,34 +1,35 @@
 <?php
+
 class DBController {
     public $dbHost = "localhost";
     public $dbUser = "root";
     public $dbPassword = "";
     public $dbName = "digital newsstand";
-    public $conn; //connection
+    public $conn;
 
-    // Constructor: connect to DB automatically -------------- done
     public function openConnection() {
+
         $this->conn = new mysqli($this->dbHost, $this->dbUser, $this->dbPassword, $this->dbName, 3306);
+
+
 
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
-
-        // Optional: set charset to utf8
         $this->conn->set_charset("utf8");
+        return true; 
     }
 
     // Method to run SELECT queries ------------- done
     public function select($query) {
         $result = $this->conn->query($query);
-        if ($result && $result->num_rows > 0) {
+        if ($result) {
             $data = $result->fetch_all(MYSQLI_ASSOC);
             return $data;
         }
         return false;
     }
 
-    // Method to run INSERT, UPDATE, DELETE ------------- يخىث
     public function execute($query) {
         return $this->conn->query($query);
     }
@@ -45,4 +46,5 @@ class DBController {
         }
     }
 }
+
 ?>
