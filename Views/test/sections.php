@@ -10,14 +10,14 @@
                 <p>Latest tech news and modern innovations</p>
                 <!-- المفروض فيه ف جافا فنكشن بتحسب عدد المقالات -->
                 <span class="article-count">25 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
             <div class="section-card featured">
                 <div class="section-icon">💼</div>
                 <h2>Business</h2>
                 <p>Company news, economy, and financial markets</p>
                 <span class="article-count">32 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
             <div class="section-card featured">
                 <div class="section-icon">🎮</div>
@@ -34,42 +34,42 @@
                 <h3>World</h3>
                 <p>International news and reports</p>
                 <span class="article-count">45 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
             <div class="section-card">
                 <div class="section-icon">⚽</div>
                 <h3>Sports</h3>
                 <p>Local and international sports news</p>
                 <span class="article-count">30 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
             <div class="section-card">
                 <div class="section-icon">🎨</div>
                 <h3>Arts</h3>
                 <p>Art and culture news</p>
                 <span class="article-count">22 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
             <div class="section-card">
                 <div class="section-icon">🏥</div>
                 <h3>Health</h3>
                 <p>Medical tips and health news</p>
                 <span class="article-count">28 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
             <div class="section-card">
                 <div class="section-icon">📚</div>
                 <h3>Education</h3>
                 <p>Education and training news</p>
                 <span class="article-count">15 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
             <div class="section-card">
                 <div class="section-icon">🌱</div>
                 <h3>Environment</h3>
                 <p>Environment and climate change news</p>
                 <span class="article-count">20 articles</span>
-                <a href="#" class="explore-btn">Explore Section</a>
+                <a href="sec.php" class="explore-btn">Explore Section</a>
             </div>
         </div>
 

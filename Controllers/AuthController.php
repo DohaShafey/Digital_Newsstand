@@ -93,33 +93,33 @@ class AuthController
     }
 
     //forget password method
-    public function forgetPassword($email)
-    {
-        $email = $this->db->escape($email);
-        $query = "SELECT * FROM user WHERE userEmail = '$email'";
-        $result = $this->db->select($query);
+    // public function forgetPassword($email)
+    // {
+    //     $email = $this->db->escape($email);
+    //     $query = "SELECT * FROM user WHERE userEmail = '$email'";
+    //     $result = $this->db->select($query);
 
-        if ($result && count($result) > 0) {
-            $token = bin2hex(random_bytes(16)); // generate a reset token
-            $_SESSION['reset_token'] = $token;
-            $_SESSION['reset_user'] = $email;
+    //     if ($result && count($result) > 0) {
+    //         $token = bin2hex(random_bytes(16)); // generate a reset token
+    //         $_SESSION['reset_token'] = $token;
+    //         $_SESSION['reset_user'] = $email;
 
-            $subject = "Password Reset Request";
-            $message = "Click the following link to reset your password:\n\n$resetLink";
-            $headers = "From: no-reply@digitalnewsstand.com";
+    //         $subject = "Password Reset Request";
+    //         // $message = "Click the following link to reset your password:\n\n$resetLink";
+    //         $headers = "From: no-reply@digitalnewsstand.com";
 
-            if (mail($email, $subject, $message, $headers)) {
-                $_SESSION['Msg'] = "Password reset link sent to your email.";
-                return true;
-            } else {
-                $_SESSION['Msg'] = "Failed to send email. Try again.";
-                return false;
-            }
-        } else {
-            $_SESSION['Msg'] = "Email not found.";
-            return false;
-        }
-    }
+    //         if (mail($email, $subject, $headers)) {
+    //             $_SESSION['Msg'] = "Password reset link sent to your email.";
+    //             return true;
+    //         } else {
+    //             $_SESSION['Msg'] = "Failed to send email. Try again.";
+    //             return false;
+    //         }
+    //     } else {
+    //         $_SESSION['Msg'] = "Email not found.";
+    //         return false;
+    //     }
+    // }
 
     //update info method
     public function updateInfo($userId, array $newInfo)
@@ -147,6 +147,7 @@ class AuthController
                     'userPassword' => $data[0]['userPassword'],
                     'userRole' => $data[0]['userRole'],
                     'languageId' => $data[0]['languageId']
+                    // 'secId' => $data[0]['languageId']
                 ];
                 return true;
             } else {

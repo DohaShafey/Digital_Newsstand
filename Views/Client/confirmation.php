@@ -43,10 +43,10 @@
 
           <div class="price">
             <div class="section">
-                <h3>"NAME" subscription</h3>
+                <h3>Basic subscription</h3>
                 <!-- المروض كل كلمة من هنا تتشال والي يتحط يبقى الداتا بتاعت اليوزر -->
-                <div class="row"><span>Price</span><span class="action">"PRICE"$</span></div>
-                <div class="row"><span>Duration</span><span class="action">1 Month</span></div>
+                <div class="row"><span>Price</span><span class="action">4$</span></div>
+                <div class="row"><span>Duration</span><span class="action">1 week</span></div>
                 <!-- <div class="row"><span>Password</span><span class="action">Update</span></div> -->
               </div>
           </div>
